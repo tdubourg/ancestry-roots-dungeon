@@ -35,6 +35,16 @@ public class PlayerController : MonoBehaviour
             //player.Cast(moveDirection, )
             var parent = player.transform.parent;
             parent.transform.Translate(moveDirection * speed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.Q))
+            {
+                parent.transform.Rotate(new Vector3(0, 0, 1));
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                parent.transform.Rotate(new Vector3(0, 0, -1));
+            }
+
+
         }
     }
 
