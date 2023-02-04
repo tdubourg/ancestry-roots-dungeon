@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player;
+    public Rigidbody2D player;
     Vector2 moveDirection = Vector2.zero;
     public float speed = 1;
+
+    public bool IsAllowInput = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,10 +27,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-        moveDirection = new Vector2(moveX, moveY).normalized;
-        player.transform.Translate(moveDirection * speed * Time.deltaTime);
+        if (IsAllowInput)
+        {
+            float moveX = Input.GetAxis("Horizontal");
+            float moveY = Input.GetAxis("Vertical");
+            moveDirection = new Vector2(moveX, moveY).normalized;
+            //player.Cast(moveDirection, )
+            var parent = player.transform.parent;
+            parent.transform.Translate(moveDirection * speed * Time.deltaTime);
+        }
     }
 
     void Move(Vector2 direction)
