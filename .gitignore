@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/GGJ2023-ancestry-roots-dungeon/Library
+/GGJ2023-ancestry-roots-dungeon/Temp
+/GGJ2023-ancestry-roots-dungeon/UserSettings
+/GGJ2023-ancestry-roots-dungeon/Logs
+/GGJ2023-ancestry-roots-dungeon/obj/Debug
