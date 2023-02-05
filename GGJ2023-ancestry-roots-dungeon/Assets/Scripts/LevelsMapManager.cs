@@ -15,26 +15,35 @@ public class LevelsMapManager : MonoBehaviour
     private float dist = 0;
     private float counter;
 
+    private bool IsBlinking = false;
+
     public void SetLevelCompletion(int currentLevel)
     {
-        origin = LevelPoints[currentLevel].transform;
-        if (LevelPoints.Count > currentLevel + 1)
+        if (currentLevel < 0)
         {
-            destination = LevelPoints[currentLevel + 1].transform;
-
-            dist = Vector3.Distance(origin.position, destination.position);
+            IsBlinking = true;
         }
-        
-        for (var i = 0; i <= currentLevel; i++)
+        else
         {
-            if (currentLevel - i - 1 >= 0)
+            origin = LevelPoints[currentLevel].transform;
+            if (LevelPoints.Count > currentLevel + 1)
             {
-                DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
+                destination = LevelPoints[currentLevel + 1].transform;
+
+                dist = Vector3.Distance(origin.position, destination.position);
             }
-            var mySprite = LevelPoints[currentLevel-i].GetComponent<SpriteRenderer>();
-            if (mySprite != null)
+
+            for (var i = 0; i <= currentLevel; i++)
             {
-                mySprite.sprite = States[1];
+                if (currentLevel - i - 1 >= 0)
+                {
+                    DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
+                }
+                var mySprite = LevelPoints[currentLevel - i].GetComponent<SpriteRenderer>();
+                if (mySprite != null)
+                {
+                    mySprite.sprite = States[1];
+                }
             }
         }
     }
@@ -53,7 +62,7 @@ public class LevelsMapManager : MonoBehaviour
     void Start()
     {
         LineAnimator = gameObject.AddComponent<LineRenderer>();
-        SetLevelCompletion(5);
+        SetLevelCompletion(0);
     }
 
     // Update is called once per frame
