@@ -28,6 +28,9 @@ public class AttackManager : MonoBehaviour
 
     void Awake()
     {
+        if (null != instance) {
+            return;
+        }
         instance = this;
         audioSource = GetComponent<AudioSource>();
     }
