@@ -44,9 +44,15 @@ public class PlayerCollider : MonoBehaviour
         }
         if (collision.collider.tag == "Enemy")
         {
-            if(health > 0)
+            if (health > 0)
             {
                 health--;
+                var HealthContainer = GameObject.Find("HealthStatus").GetComponent<UI_Health>();
+                if (HealthContainer.HealthContainer.Count > 0)
+                {
+                    HealthContainer.LoseHealth();
+                    HealthContainer.HealthContainer.RemoveAt(0);
+                }
                 if(health == 0)
                 {
                     //TODO - call onDeath()
