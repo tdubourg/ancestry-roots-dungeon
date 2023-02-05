@@ -48,14 +48,12 @@ public class StoryTextScroller : MonoBehaviour {
 
     void init() {
         Debug.Log("scroller init()");
-        Debug.Log(Text.text);
         pages = new ArrayList();
         var words = Text.text.Split(" ");
         var pageNum = 0;
         pages.Add("");
         // Hacky, unoptimized, but quick to write
         for (int i = 0; i < words.Length; i++) {
-            Debug.Log(words[i]);
             pages[pageNum] += words[i] + " ";
             if (0 == ((i + 1) % PageSizeNumWords)) {
                 pageNum += 1;
@@ -84,7 +82,7 @@ public class StoryTextScroller : MonoBehaviour {
             }
         } else {
             currentPage += 1;
-            Debug.Log(currentPage + " " + pages.Count + " " + pages[currentPage]);
+            // Debug.Log(currentPage + " " + pages.Count + " " + pages[currentPage]);
             TextMeshPro.text = pages[currentPage].ToString();
         }
     }
