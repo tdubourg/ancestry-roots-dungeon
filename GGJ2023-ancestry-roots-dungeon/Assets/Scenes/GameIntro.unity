@@ -123,6 +123,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &82012513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 82012515}
+  - component: {fileID: 82012514}
+  m_Layer: 0
+  m_Name: LevelTransitioner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &82012514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82012513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88c18a048578cce44b78cf68efcbe44b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIRoot: {fileID: 0}
+  PlayerRoot: {fileID: 0}
+  LevelsConfig: []
+  LevelIntro: {fileID: 0}
+  NarrativeAncestorImage: {fileID: 0}
+  NarrativeTextScroller: {fileID: 0}
+  CurrentLevel: 1
+  KeepOnSceneChange: 1
+  KeepOnlyOnce: 1
+--- !u!4 &82012515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82012513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.510287, y: -0.8737876, z: 0.03820824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1330209020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +183,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4031729252757939464, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
+      propertyPath: CurrentLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031729252757939464, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
+      propertyPath: KeepOnlyOnce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031729252757939464, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
+      propertyPath: KeepOnSceneChange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6003853915952665123, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -144,7 +209,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 00f8446b326da9d489c81b5a00a7a317, type: 3}
     - target: {fileID: 7134213084104136782, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7134213084104136782, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -190,7 +255,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticScreenPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4031729252757939464, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
 --- !u!224 &1330209021 stripped
 RectTransform:
@@ -211,6 +277,10 @@ PrefabInstance:
     - target: {fileID: 4104154305457894979, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
       propertyPath: NextScene
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104154305457894979, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
+      propertyPath: UseTreeMap
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4104154305457894979, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
       propertyPath: ExtraEndPage

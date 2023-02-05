@@ -10,6 +10,8 @@ public class StoryTextScroller : MonoBehaviour {
     static private StoryTextScroller instance;
     public TMP_Text TextMeshPro;
 
+    public bool UseTreeMap = false;
+
     public TextAsset Text;
 
     public int PageSizeNumWords = 30;
@@ -83,7 +85,11 @@ public class StoryTextScroller : MonoBehaviour {
         if (currentPage == pages.Count - 1) {
             TextMeshPro.text = "...";
             if (GoToNextSceneOnceEnded && Levels.INVALID != NextScene) {
-                LevelTransitioner.GetInstance().GoToLevel(NextScene);
+                if (UseTreeMap) {
+                    LevelTransitioner.GetInstance().GoToLevelViaMap(NextScene);
+                } else {
+                    LevelTransitioner.GetInstance().GoToLevel(NextScene);
+                }
             } else if (VanishOnceEnded) {
                 gameObject.SetActive(false);
             }

@@ -57,6 +57,8 @@ public GameObject PlayerRoot;
 
     public bool KeepOnSceneChange = true;
 
+    public bool KeepOnlyOnce = false;
+
     private LevelTransitioner() {
     }
 
@@ -116,24 +118,42 @@ public GameObject PlayerRoot;
             // Tear down everything
             Destroy(gameObject);
         }
+        if (KeepOnSceneChange && KeepOnlyOnce) {
+            KeepOnSceneChange = false;
+            var throwaway = new GameObject();
+            gameObject.transform.parent = throwaway.transform;
+        }
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
     }
 
     public void GoToLevelViaMap(Levels target) {
         PreviousLevel = CurrentLevel;
         PostTreeMapLevelTarget = target;
-        PlayerRoot.SetActive(false);
-        UIRoot.SetActive(false);
+        if (PlayerRoot) {
+            PlayerRoot.SetActive(false);
+        }
+        if (UIRoot) {
+            UIRoot.SetActive(false);
+        }
         if (target == Levels.GameOver) {
             // Tear down everything
             Destroy(gameObject);
+        }
+        if (KeepOnSceneChange && KeepOnlyOnce) {
+            KeepOnSceneChange = false;
+            var throwaway = new GameObject();
+            gameObject.transform.parent = throwaway.transform;
         }
         SceneManager.LoadScene(getSceneFileNameFromEnum(Levels.MapTree));
     }
 
     public void ContinueAfterTreeMap() {
-        PlayerRoot.SetActive(true);
-        UIRoot.SetActive(true);
+        if (PlayerRoot) {
+            PlayerRoot.SetActive(true);
+        }
+        if (UIRoot) {
+            UIRoot.SetActive(true);
+        }
         GoToLevel(PostTreeMapLevelTarget);
     }
 
