@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplashScreen : MonoBehaviour
+public class ExitButton : MonoBehaviour
 {
+    public void OnExit()
+    {
+        Application.Quit();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -13,10 +17,5 @@ public class SplashScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (Input.anyKeyDown)
-        //{
-        //    Debug.Log("Going to the next scene!");
-        //    LevelTransitioner.GetInstance().GoToLevel(Levels.GameIntro);
-        //}
     }
 }
