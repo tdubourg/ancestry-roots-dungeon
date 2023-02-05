@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using System;
 
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 1.0f;
 
     PlayerCollider _playerCollider;
+    public SpriteRenderer PlayerSprite;
+    public Sprite SpriteUp;
+    public Sprite SpriteDown;
+    public Sprite SpriteRight;
+    public Sprite SpriteLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +31,28 @@ public class PlayerController : MonoBehaviour
         //InputManager.MovementActions.
     }
 
+    private void spriteDirection(Vector2 move) {
+        // var motionVec = new Vector2D(this.transform.X)
+        var right = Vector2.Dot(move, Vector2.right);
+        var left = Vector2.Dot(move, Vector2.left);
+        var up = Vector2.Dot(move, Vector2.up);
+        var down = Vector2.Dot(move, Vector2.down);
+
+        if (up > 0 && up > left && up > right) {
+            PlayerSprite.sprite = SpriteUp;
+        } else if (down > 0 && down > left && down > right) {
+            PlayerSprite.sprite = SpriteDown;
+        } else if (right > 0) {
+            PlayerSprite.sprite = SpriteRight;
+        } else if (left > 0) {
+            PlayerSprite.sprite = SpriteLeft;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+
         if (!IsAllowInput && body.velocity != Vector2.zero)
         {
             //moveSpeed = 0;
@@ -73,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
         //body.AddForce(movement);
         body.velocity = (movement);
+        spriteDirection(movement);
 
         if (Input.GetKey(KeyCode.Q))
         {
