@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd59cef12312704a99ad2c2d1f45745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenAttacks: 1
   Damage: 10
   MAX_HEALTH: 20
 --- !u!114 &7477656483640666301
@@ -99,9 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df3c7fb00de5884c8210c33536eb38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyType: 2
   health: 20
-  timeBetweenAttacks: 1
 --- !u!1 &4526805128549420739
 GameObject:
   m_ObjectHideFlags: 0
