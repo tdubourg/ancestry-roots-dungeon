@@ -8,11 +8,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D body;
-    Vector2 moveDirection = Vector2.zero;
     public float moveSpeed = 1;
-
     public bool IsAllowInput = true;
     public float rotationSpeed = 1.0f;
+
+    PlayerCollider _playerCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        _playerCollider = this.gameObject.GetComponent<PlayerCollider>();
         //InputManager.MovementActions.
     }
 
@@ -82,7 +83,14 @@ public class PlayerController : MonoBehaviour
             body.transform.Rotate(new Vector3(0, 0, -rotationSpeed));
         }
 
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (_playerCollider.currentPoints >= 5)
+            {
+                _playerCollider.currentPoints -= 5;
+            }
+            //TODO - hook in action process
+        }
     }
 
     void Move(Vector2 direction)
