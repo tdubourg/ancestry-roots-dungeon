@@ -66,7 +66,7 @@ public class StoryTextScroller : MonoBehaviour {
 
 
     void Update() {
-        if (Input.anyKeyDown) {
+        if (Time.timeSinceLevelLoad > 1.1 && Input.anyKeyDown) {
             Debug.Log("Next page of text");
             NextPage();
         }

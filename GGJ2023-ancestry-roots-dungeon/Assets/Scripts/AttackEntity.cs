@@ -9,7 +9,7 @@ public class AttackEntity : MonoBehaviour
     private float tmeToNextAttack = 0.0f;
 
     // C# does not support string enums... 
-    class AttackersTags
+    public class AttackersTags
     {
         public const string Player = "Player";
         public const string Fireball = "Fireball";

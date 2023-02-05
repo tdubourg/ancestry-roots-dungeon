@@ -14,21 +14,28 @@ public enum Levels {
     QuestRealStart,
     INVALID,
     GameOver,
+    MapTree,
 }
 
 class LevelTransitioner : MonoBehaviour {
 
+public GameObject UIRoot;
+public GameObject PlayerRoot;
     [Serializable]
     public struct LevelInfo {
         public Levels level;
         public Sprite ancestor;
 
         public TextAsset text;
+
+        public Vector2 spawnCoords;
     }
     public LevelInfo[] LevelsConfig;
 
     private Dictionary<Levels, LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
     static private LevelTransitioner instance;
+
+    public Levels PreviousLevel { get; private set; }
 
     public GameObject LevelIntro;
     public Image NarrativeAncestorImage;
@@ -64,6 +71,8 @@ class LevelTransitioner : MonoBehaviour {
                 return "QuestRealStart";
             case Levels.GameOver:
                 return "GameOver";
+            case Levels.MapTree:
+                return "TheoMapOverworld"; // TODO change
             case Levels.SplashScreen:
             default:
                 return "SplashScreen";
@@ -76,6 +85,7 @@ class LevelTransitioner : MonoBehaviour {
             return;
         }
         instance = this;
+        PreviousLevel = Levels.INVALID;
         if (KeepOnSceneChange) {
             DontDestroyOnLoad(gameObject);
         }
@@ -98,6 +108,7 @@ class LevelTransitioner : MonoBehaviour {
     }
 
     public void GoToLevel(Levels target) {
+        PreviousLevel = CurrentLevel;
         CurrentLevel = target;
         if (target == Levels.GameOver) {
             // Tear down everything
@@ -114,6 +125,12 @@ class LevelTransitioner : MonoBehaviour {
         var info = LEVELS_TO_CONFIG[CurrentLevel];
         NarrativeAncestorImage.sprite = info.ancestor;
         NarrativeTextScroller.Text = info.text;
+        if (PlayerRoot) {
+            var playerGO = PlayerRoot.GetComponentInChildren<PlayerController>().gameObject;
+            Debug.Log(playerGO.transform.position);
+            Debug.Log(LEVELS_TO_CONFIG[CurrentLevel].spawnCoords);
+            playerGO.transform.position = new Vector3(LEVELS_TO_CONFIG[CurrentLevel].spawnCoords.x, LEVELS_TO_CONFIG[CurrentLevel].spawnCoords.y, playerGO.transform.position.z);
+        }
         LevelIntro.SetActive(true);
     }
 
