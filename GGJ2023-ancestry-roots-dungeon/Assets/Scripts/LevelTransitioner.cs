@@ -35,6 +35,8 @@ public GameObject PlayerRoot;
     private Dictionary<Levels, LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
     static private LevelTransitioner instance;
 
+    public Levels PostTreeMapLevelTarget { get; private set;}
+
     public Levels PreviousLevel { get; private set; }
 
     public GameObject LevelIntro;
@@ -72,7 +74,7 @@ public GameObject PlayerRoot;
             case Levels.GameOver:
                 return "GameOver";
             case Levels.MapTree:
-                return "TheoMapOverworld"; // TODO change
+                return "MapOverworld"; // TODO change
             case Levels.SplashScreen:
             default:
                 return "SplashScreen";
@@ -116,6 +118,19 @@ public GameObject PlayerRoot;
         }
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
     }
+
+    public void GoToLevelViaMap(Levels target) {
+        PreviousLevel = CurrentLevel;
+        PostTreeMapLevelTarget = target;
+        PlayerRoot.SetActive(false);
+        UIRoot.SetActive(false);
+        if (target == Levels.GameOver) {
+            // Tear down everything
+            Destroy(gameObject);
+        }
+        SceneManager.LoadScene(getSceneFileNameFromEnum(Levels.MapTree));
+    }
+
 
     public void TriggerLevelIntro() {
         Debug.Log("TriggerLevelIntro");

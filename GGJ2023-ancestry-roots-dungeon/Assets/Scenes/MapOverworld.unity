@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: LineDrawSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 7405795471004727625, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
       propertyPath: m_Name
       value: LevelsMap
@@ -274,7 +278,6 @@ GameObject:
   m_Component:
   - component: {fileID: 853857982}
   - component: {fileID: 853857981}
-  - component: {fileID: 853857980}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -282,14 +285,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &853857980
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853857979}
-  m_Enabled: 1
 --- !u!20 &853857981
 Camera:
   m_ObjectHideFlags: 0

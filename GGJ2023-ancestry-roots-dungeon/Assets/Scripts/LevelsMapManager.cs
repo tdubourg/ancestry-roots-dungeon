@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelsMapManager : MonoBehaviour
-{
+public class LevelsMapManager : MonoBehaviour {
+
+    static Dictionary<Levels, int> LEVEL_TO_INT_MAP = new Dictionary<Levels, int>() {
+        {Levels.TrainingGround1, 1},
+        {Levels.TrainingGround2, 3},
+        {Levels.QuestRealStart, 4},
+    };
 
     public List<GameObject> LevelPoints;
     public List<Sprite> States;//0 = Off & 1 = On
     LineRenderer LineAnimator;
-    public float lineDrawSpeed = .000006f;
+    public float LineDrawSpeed = .006f;
     public Material LineMaterial;
     public float lineSize = 0.05f;
     public Color lineColor = Color.gray;
@@ -22,9 +27,24 @@ public class LevelsMapManager : MonoBehaviour
     public float period = 0.1f;
     private bool IsBlinking = false;
     int LevelIndex;
+    static private LevelsMapManager instance;
 
-    public void SetLevelCompletion(int currentLevel)
-    {
+    static public LevelsMapManager GetInstance() {
+        if (null == instance) {
+            Debug.Log("LevelsMapManager.GetInstance() called before init");
+
+        }
+        return instance;
+    }
+    void Awake() {
+        if (null != instance) {
+            DestroyImmediate(gameObject);
+            return;
+        }
+        instance = this;
+    }
+
+    public void SetLevelCompletion(int currentLevel) {
         //if (currentLevel < 0)
         //{
 
@@ -33,37 +53,31 @@ public class LevelsMapManager : MonoBehaviour
         //else
         //{
         LevelIndex = currentLevel;
-        if (LevelIndex != LevelPoints.Count)
-        {
+        if (LevelIndex != LevelPoints.Count) {
             LevelIndex++;
         }
-        
+
         origin = LevelPoints[currentLevel].transform;
-            if (LevelPoints.Count > currentLevel + 1)
-            {
-                destination = LevelPoints[currentLevel + 1].transform;
+        if (LevelPoints.Count > currentLevel + 1) {
+            destination = LevelPoints[currentLevel + 1].transform;
 
-                dist = Vector3.Distance(origin.position, destination.position);
-            }
+            dist = Vector3.Distance(origin.position, destination.position);
+        }
 
-            for (var i = 0; i <= currentLevel; i++)
-            {
-                if (currentLevel - i - 1 >= 0)
-                {
-                    DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
-                }
-                var mySprite = LevelPoints[currentLevel - i].GetComponent<SpriteRenderer>();
-                if (mySprite != null)
-                {
-                    mySprite.sprite = States[1];
-                }
+        for (var i = 0; i <= currentLevel; i++) {
+            if (currentLevel - i - 1 >= 0) {
+                DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
             }
+            var mySprite = LevelPoints[currentLevel - i].GetComponent<SpriteRenderer>();
+            if (mySprite != null) {
+                mySprite.sprite = States[1];
+            }
+        }
         //}
     }
 
 
-    void DrawLineBetweenTwoPoints(Vector3 sp, Vector3 ep, int i)
-    {
+    void DrawLineBetweenTwoPoints(Vector3 sp, Vector3 ep, int i) {
         GameObject childOb = new GameObject("ChildLienRenderer" + i.ToString());
         childOb.transform.SetParent(this.transform);
         var Line = childOb.AddComponent<LineRenderer>();
@@ -77,30 +91,27 @@ public class LevelsMapManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         LineAnimator = gameObject.AddComponent<LineRenderer>();
         LineAnimator.startColor = lineColor;
         LineAnimator.endColor = lineColor;
         LineAnimator.startWidth = lineSize;
         LineAnimator.endWidth = lineSize;
         LineAnimator.material = LineMaterial;
+        SetLevelCompletion(LEVEL_TO_INT_MAP[LevelTransitioner.GetInstance().PreviousLevel]);
         //SetLevelCompletion(1);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Time.time > nextActionTime && Time.time <= maxActionTime)
-        {
-            
+    void Update() {
+        if (Time.time > nextActionTime && Time.time <= maxActionTime) {
+
             nextActionTime += period;
             LevelPoints[LevelIndex].GetComponent<SpriteRenderer>().enabled = !LevelPoints[LevelIndex].GetComponent<SpriteRenderer>().enabled;
         }
-            
-        if(counter < dist)
-        {
-            counter += .1f / lineDrawSpeed;
+
+        if (counter < dist) {
+            counter += .1f * LineDrawSpeed;
 
             float x = Mathf.Lerp(0, dist, counter);
 
