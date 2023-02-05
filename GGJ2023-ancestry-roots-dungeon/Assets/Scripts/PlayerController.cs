@@ -13,15 +13,18 @@ public class PlayerController : MonoBehaviour
 
     public bool IsAllowInput = true;
 
+    private AttackManager attackManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Awake()
     {
         //InputManager.MovementActions.
+        attackManager = transform.GetComponent<AttackManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,10 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 parent.transform.Rotate(new Vector3(0, 0, -1));
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                attackManager.fire(moveDirection);
             }
 
 
