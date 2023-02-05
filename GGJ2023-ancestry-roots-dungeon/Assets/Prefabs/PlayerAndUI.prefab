@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 1562893992086760868}
   - component: {fileID: 888342966807823376}
   - component: {fileID: 7509655842109049253}
-  - component: {fileID: 8743108083100907801}
   m_Layer: 0
   m_Name: PlayerAndUI
   m_TagString: Untagged
@@ -162,14 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIRoot: {fileID: 1562893992223144624}
   CurrentLevel: 0
---- !u!81 &8743108083100907801
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562893992086760869}
-  m_Enabled: 1
 --- !u!1 &1562893992223144624
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +559,10 @@ PrefabInstance:
       propertyPath: Healthbar
       value: 
       objectReference: {fileID: 1562893993454569692}
+    - target: {fileID: 3219431106940903837, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: fireBallSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c43d671a87490664b917a454441ceb90, type: 3}
     - target: {fileID: 4926765013366494113, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -699,7 +694,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 66bd824ddc875dc4a9464a7de4d8a19e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c43d671a87490664b917a454441ceb90, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

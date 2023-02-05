@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    // public AudioClip 
+    public AudioClip fireBallSound;
     static private AttackManager instance;
     static public AttackManager GetInstance()
     {
@@ -44,6 +44,13 @@ public class AttackManager : MonoBehaviour
             case (AttackMode.Fireball):
                 GameObject fireBallInstance = Instantiate(fireBall, transform.position, transform.rotation);
                 fireBallInstance.GetComponent<Projectile>().moveDirection = direction;
+                if (fireBallSound)
+                {
+                    audioSource.time = 2f;
+                    audioSource.PlayOneShot(fireBallSound, 1.0f);
+                }
+                else
+                    Debug.Log("fireball sound not loaded!");
                 // fireBallInstance.transform.forward = direction;
                 break;
             default:
