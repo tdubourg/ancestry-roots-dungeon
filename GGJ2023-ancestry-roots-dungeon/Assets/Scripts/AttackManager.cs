@@ -16,8 +16,6 @@ public class AttackManager : MonoBehaviour
 
     public AttackMode currentAttackMode = AttackMode.Fireball;
 
-
-
     public void fire(Vector2 direction)
     {
         Debug.Log(currentAttackMode);
@@ -38,8 +36,4 @@ public class AttackManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        currentAttackMode = AttackMode.Fireball;
-    }
 }

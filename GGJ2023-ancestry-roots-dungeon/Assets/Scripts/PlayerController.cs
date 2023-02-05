@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public AttackManager attackManager;
 
+    private Vector2 lastDirectionFaced = Vector2.right;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,15 +73,21 @@ public class PlayerController : MonoBehaviour
             movement.y = moveY * moveSpeed;
             //Debug.Log("KeyPressS: X: " + moveX + " Y: " + moveY);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            attackManager.fire(movement);
+            attackManager.fire(lastDirectionFaced);
+        }
+
+        if (movement != Vector2.zero)
+        {
+            lastDirectionFaced = movement;
         }
 
         //movement = movement + (Vector2)(transform.position);
 
         //body.AddForce(movement);
         body.velocity = (movement);
+
 
         if (Input.GetKey(KeyCode.Q))
         {
