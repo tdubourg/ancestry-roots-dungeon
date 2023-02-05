@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
+
 
 public enum Levels
 {
@@ -13,13 +16,23 @@ public enum Levels
     INVALID,
 }
 
-class LevelTransitioner
+class LevelTransitioner: MonoBehaviour
 {
     static private LevelTransitioner instance;
     private Levels currentLevel = Levels.SplashScreen;
 
+    private HashSet<Levels> clearedLevels = new HashSet<Levels>();
+
     public Levels getCurrentLevel() {
         return currentLevel;
+    }
+
+    public void SetHasClearedLevel(Levels level) {
+        clearedLevels.Add(level);
+    }
+
+    public bool IsLevelCleared(Levels level) {
+        return clearedLevels.Contains(level);
     }
 
     private LevelTransitioner()
@@ -45,11 +58,18 @@ class LevelTransitioner
         }
     }
 
+    
+    void Awake()
+    {
+        instance = this;
+    }
+
     static public LevelTransitioner GetInstance()
     {
         if (null == instance)
         {
-            instance = new LevelTransitioner();
+            Debug.Log("LevelTransitioner.GetInstance() called before init");
+
         }
         return instance;
     }
@@ -57,5 +77,9 @@ class LevelTransitioner
     public void GoToLevel(Levels target)
     {
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
+    }
+
+    public void TriggerLevelIntro() {
+        
     }
 }
