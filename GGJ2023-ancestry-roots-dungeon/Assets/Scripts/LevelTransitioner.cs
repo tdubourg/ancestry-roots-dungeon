@@ -31,6 +31,7 @@ class LevelTransitioner: MonoBehaviour
     private Dictionary<Levels,LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
     static private LevelTransitioner instance;
 
+    public GameObject LevelIntro;
     public Image NarrativeAncestorImage;
     public StoryTextScroller NarrativeTextScroller;
 

@@ -169,6 +169,7 @@ MonoBehaviour:
   - level: 4
     ancestor: {fileID: 21300000, guid: fb65ac0eda2546b478060ec9b8754d2d, type: 3}
     text: {fileID: 4900000, guid: 6ebd47ae8edb24244bb82056edff18cc, type: 3}
+  LevelIntro: {fileID: 5036814222454528154}
   NarrativeAncestorImage: {fileID: 7369906482839814537}
   NarrativeTextScroller: {fileID: 3618636626276452667}
   CurrentLevel: 0
@@ -551,7 +552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7217801312726992035
 Transform:
   m_ObjectHideFlags: 0
@@ -657,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819430550897595073, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819430551531306738, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
       propertyPath: m_AnchoredPosition.x
