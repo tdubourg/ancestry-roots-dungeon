@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using System;
-
+using UnityEngine.UI;
 
 public enum Levels
 {
@@ -18,10 +18,23 @@ public enum Levels
 
 class LevelTransitioner: MonoBehaviour
 {
+
+     [Serializable]
+    public struct LevelInfo {
+        public Levels level;
+        public Sprite ancestor;
+
+        public TextAsset text;
+    }
+    public LevelInfo[] LevelsConfig;
+
+    private Dictionary<Levels,LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
     static private LevelTransitioner instance;
 
-    public GameObject UIRoot;
-    
+    public GameObject LevelIntro;
+    public Image NarrativeAncestorImage;
+    public StoryTextScroller NarrativeTextScroller;
+
     public Levels CurrentLevel = Levels.SplashScreen;
 
     private HashSet<Levels> clearedLevels = new HashSet<Levels>();
@@ -61,6 +74,10 @@ class LevelTransitioner: MonoBehaviour
     void Awake()
     {
         instance = this;
+        for (int i = 0; i < LevelsConfig.Length; i++)
+        {
+            LEVELS_TO_CONFIG[LevelsConfig[i].level] = LevelsConfig[i];
+        }
     }
 
     static public LevelTransitioner GetInstance()
@@ -79,6 +96,9 @@ class LevelTransitioner: MonoBehaviour
     }
 
     public void TriggerLevelIntro() {
-
+        var info = LEVELS_TO_CONFIG[CurrentLevel];
+        NarrativeAncestorImage.sprite = info.ancestor;
+        NarrativeTextScroller.Text = info.text;
+        LevelIntro.SetActive(true);
     }
 }

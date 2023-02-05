@@ -17,6 +17,8 @@ public class StoryTextScroller : MonoBehaviour {
 
     public bool GoToNextSceneOnceEnded = false;
 
+    public bool VanishOnceEnded = false;
+
     private int currentPage = 0;
 
     private ArrayList pages = new ArrayList();
@@ -37,9 +39,9 @@ public class StoryTextScroller : MonoBehaviour {
         var pageNum = 0;
         pages.Add("");
         // Hacky, unoptimized, but quick to write
-        for (int i = 1; i <= words.Length; i++) { // starting at 1 to avoid i%pagesize be 0 on i=0
+        for (int i = 0; i < words.Length; i++) {
             pages[pageNum] += words[i] + " ";
-            if (0 == i % PageSizeNumWords) {
+            if (0 == ((i+1) % PageSizeNumWords)) {
                 Debug.Log(pages[pageNum]);
                 pageNum += 1;
                 pages.Add("");
@@ -62,6 +64,8 @@ public class StoryTextScroller : MonoBehaviour {
             TextMeshPro.text = "...";
             if (GoToNextSceneOnceEnded && Levels.INVALID != NextScene) {
                 LevelTransitioner.GetInstance().GoToLevel(NextScene);
+            } else if (VanishOnceEnded) {
+                gameObject.SetActive(false);
             }
         } else {
             currentPage += 1;
