@@ -689,6 +689,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 877a30b4a742f904b85069b8ad85df35, type: 3}
     - target: {fileID: 1281095639, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: moveSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281095639, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: SpriteDown
       value: 
       objectReference: {fileID: 21300000, guid: fa2e9f3fe691b1a4ca900fb2366d9b42, type: 3}
@@ -708,6 +712,10 @@ PrefabInstance:
       propertyPath: PlayerSprite
       value: 
       objectReference: {fileID: 5904185452791674376}
+    - target: {fileID: 1281095639, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: rotationSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1281095639, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: lowHealthASource
       value: 

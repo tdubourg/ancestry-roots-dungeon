@@ -49,8 +49,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a4e0bb63a80014bada18bfe3fc04b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkASource: {fileID: 0}
+  lowHealthASource: {fileID: 0}
   body: {fileID: 1281095640}
-  moveSpeed: 1
+  moveSpeed: 4.5
   IsAllowInput: 1
   rotationSpeed: 1.5
   PlayerSprite: {fileID: 0}
@@ -118,12 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6d039a286779742b9c860b9f9f4f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  healthUIProgressSpeed: 0.2
-  Healthbar: {fileID: 0}
-  regenRate: 0.01
-  maxPoints: 10
-  currentPoints: 10
 --- !u!1 &901421607644248419
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6451d8b7c59ecad4d97ed0a2d9a04ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBallSound: {fileID: 0}
   playerController: {fileID: 1281095639}
   fireBall: {fileID: 52763732463360789, guid: e98c69a9ce88e6d45ba0ecf94dcfca0e, type: 3}
   currentAttackMode: 1
