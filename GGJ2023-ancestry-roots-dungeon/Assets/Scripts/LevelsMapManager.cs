@@ -85,7 +85,7 @@ public class LevelsMapManager : MonoBehaviour
         LineAnimator.startWidth = lineSize;
         LineAnimator.endWidth = lineSize;
         LineAnimator.material = LineMaterial;
-        SetLevelCompletion(1);
+        //SetLevelCompletion(1);
     }
 
     // Update is called once per frame
