@@ -6,6 +6,7 @@ public class AttackManager : MonoBehaviour
 {
     public PlayerController playerController;
 
+
     public GameObject fireBall;
 
     public enum AttackMode
@@ -19,5 +20,9 @@ public class AttackManager : MonoBehaviour
     public void fire(Vector2 direction)
     {
         GameObject fireBallInstance = Instantiate(fireBall);
+    }
+
+    private void Update()
+    {
     }
 }
