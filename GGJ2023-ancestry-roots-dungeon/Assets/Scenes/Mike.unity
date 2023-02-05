@@ -271,6 +271,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3219431106940903837, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: fireBall
+      value: 
+      objectReference: {fileID: 52763732463360789, guid: e98c69a9ce88e6d45ba0ecf94dcfca0e, type: 3}
+    - target: {fileID: 3219431106940903837, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: currentAttackMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6434054881291754879, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_Name
       value: Player
