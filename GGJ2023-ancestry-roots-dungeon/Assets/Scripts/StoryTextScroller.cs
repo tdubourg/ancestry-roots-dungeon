@@ -22,7 +22,7 @@ public class StoryTextScroller : MonoBehaviour {
 
     private int currentPage = 0;
 
-    private ArrayList pages = new ArrayList();
+    private ArrayList pages;
     static public StoryTextScroller GetInstance() {
         if (null == instance) {
             Debug.Log("StoryTextScroller.GetInstance() called before init");
@@ -49,14 +49,15 @@ public class StoryTextScroller : MonoBehaviour {
     void init() {
         Debug.Log("scroller init()");
         Debug.Log(Text.text);
+        pages = new ArrayList();
         var words = Text.text.Split(" ");
         var pageNum = 0;
         pages.Add("");
         // Hacky, unoptimized, but quick to write
         for (int i = 0; i < words.Length; i++) {
+            Debug.Log(words[i]);
             pages[pageNum] += words[i] + " ";
             if (0 == ((i + 1) % PageSizeNumWords)) {
-                Debug.Log(pages[pageNum]);
                 pageNum += 1;
                 pages.Add("");
             }
@@ -74,7 +75,6 @@ public class StoryTextScroller : MonoBehaviour {
     }
 
     public void NextPage() {
-        Debug.Log(currentPage + " " + pages.Count);
         if (currentPage == pages.Count - 1) {
             TextMeshPro.text = "...";
             if (GoToNextSceneOnceEnded && Levels.INVALID != NextScene) {
@@ -84,6 +84,7 @@ public class StoryTextScroller : MonoBehaviour {
             }
         } else {
             currentPage += 1;
+            Debug.Log(currentPage + " " + pages.Count + " " + pages[currentPage]);
             TextMeshPro.text = pages[currentPage].ToString();
         }
     }
