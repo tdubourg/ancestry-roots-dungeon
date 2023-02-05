@@ -16,6 +16,9 @@ public class CameraFollowPlayer : MonoBehaviour {
     }
 
     void Awake() {
+        if (null != instance) {
+            return;
+        }
         instance = this;
     }
 

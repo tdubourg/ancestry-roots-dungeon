@@ -51,6 +51,9 @@ MonoBehaviour:
   TextMeshPro: {fileID: 7819430551974100062}
   Text: {fileID: 0}
   PageSizeNumWords: 30
+  NextScene: 5
+  GoToNextSceneOnceEnded: 0
+  VanishOnceEnded: 0
 --- !u!1 &7819430551258540018
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +416,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 11.837524, y: 21.784363, z: -569.3375, w: -200.8117}
+  m_margin: {x: 29.87207, y: 32.392853, z: -567.2158, w: -201.87256}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

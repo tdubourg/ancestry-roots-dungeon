@@ -6,20 +6,19 @@ using UnityEngine.InputSystem;
 using System;
 using UnityEngine.UI;
 
-public enum Levels
-{
+public enum Levels {
     SplashScreen,
     GameIntro,
     TrainingGround1,
     TrainingGround2,
     QuestRealStart,
     INVALID,
+    GameOver,
 }
 
-class LevelTransitioner: MonoBehaviour
-{
+class LevelTransitioner : MonoBehaviour {
 
-     [Serializable]
+    [Serializable]
     public struct LevelInfo {
         public Levels level;
         public Sprite ancestor;
@@ -28,7 +27,7 @@ class LevelTransitioner: MonoBehaviour
     }
     public LevelInfo[] LevelsConfig;
 
-    private Dictionary<Levels,LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
+    private Dictionary<Levels, LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
     static private LevelTransitioner instance;
 
     public GameObject LevelIntro;
@@ -47,14 +46,13 @@ class LevelTransitioner: MonoBehaviour
         return clearedLevels.Contains(level);
     }
 
-    private LevelTransitioner()
-    {
+    public bool KeepOnSceneChange = true;
+
+    private LevelTransitioner() {
     }
 
-    private string getSceneFileNameFromEnum(Levels level)
-    {
-        switch (level)
-        {
+    private string getSceneFileNameFromEnum(Levels level) {
+        switch (level) {
 
             case Levels.GameIntro:
                 return "GameIntro";
@@ -64,41 +62,65 @@ class LevelTransitioner: MonoBehaviour
                 return "TrainingGround2";
             case Levels.QuestRealStart:
                 return "QuestRealStart";
+            case Levels.GameOver:
+                return "GameOver";
             case Levels.SplashScreen:
             default:
                 return "SplashScreen";
         }
     }
 
-    
-    void Awake()
-    {
+    void Awake() {
+        if (null != instance) {
+            DestroyImmediate(gameObject);
+            return;
+        }
         instance = this;
-        for (int i = 0; i < LevelsConfig.Length; i++)
-        {
+        if (KeepOnSceneChange) {
+            DontDestroyOnLoad(gameObject);
+        }
+        for (int i = 0; i < LevelsConfig.Length; i++) {
             LEVELS_TO_CONFIG[LevelsConfig[i].level] = LevelsConfig[i];
         }
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    static public LevelTransitioner GetInstance()
-    {
-        if (null == instance)
-        {
+    private void OnSceneLoaded(Scene _scene, LoadSceneMode _mode) {
+        init();
+    }
+
+    static public LevelTransitioner GetInstance() {
+        if (null == instance) {
             Debug.Log("LevelTransitioner.GetInstance() called before init");
 
         }
         return instance;
     }
 
-    public void GoToLevel(Levels target)
-    {
+    public void GoToLevel(Levels target) {
+        CurrentLevel = target;
+        if (target == Levels.GameOver) {
+            // Tear down everything
+            Destroy(gameObject);
+        }
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
     }
 
     public void TriggerLevelIntro() {
+        Debug.Log("TriggerLevelIntro");
+        if (!LEVELS_TO_CONFIG.ContainsKey(CurrentLevel)) {
+            return;
+        }
         var info = LEVELS_TO_CONFIG[CurrentLevel];
         NarrativeAncestorImage.sprite = info.ancestor;
         NarrativeTextScroller.Text = info.text;
         LevelIntro.SetActive(true);
     }
+
+    private void init() {
+        if (!IsLevelCleared(CurrentLevel)) {
+            TriggerLevelIntro();
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; // Required when Using UI elements.
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StoryTextScroller : MonoBehaviour {
     static private StoryTextScroller instance;
@@ -21,7 +22,7 @@ public class StoryTextScroller : MonoBehaviour {
 
     private int currentPage = 0;
 
-    private ArrayList pages = new ArrayList();
+    private ArrayList pages;
     static public StoryTextScroller GetInstance() {
         if (null == instance) {
             Debug.Log("StoryTextScroller.GetInstance() called before init");
@@ -30,24 +31,39 @@ public class StoryTextScroller : MonoBehaviour {
     }
 
     void Awake() {
+        if (null != instance) {
+            return;
+        }
         instance = this;
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void Start() {
+    private void OnSceneLoaded(Scene _scene, LoadSceneMode _mode) {
+        init();
+    }
+
+    void OnEnable() {
+        init();
+    }
+
+    void init() {
+        Debug.Log("scroller init()");
         Debug.Log(Text.text);
+        pages = new ArrayList();
         var words = Text.text.Split(" ");
         var pageNum = 0;
         pages.Add("");
         // Hacky, unoptimized, but quick to write
         for (int i = 0; i < words.Length; i++) {
+            Debug.Log(words[i]);
             pages[pageNum] += words[i] + " ";
-            if (0 == ((i+1) % PageSizeNumWords)) {
-                Debug.Log(pages[pageNum]);
+            if (0 == ((i + 1) % PageSizeNumWords)) {
                 pageNum += 1;
                 pages.Add("");
             }
         }
         TextMeshPro.text = pages[0].ToString();
+
     }
 
 
@@ -59,7 +75,6 @@ public class StoryTextScroller : MonoBehaviour {
     }
 
     public void NextPage() {
-        Debug.Log(currentPage + " " + pages.Count);
         if (currentPage == pages.Count - 1) {
             TextMeshPro.text = "...";
             if (GoToNextSceneOnceEnded && Levels.INVALID != NextScene) {
@@ -69,6 +84,7 @@ public class StoryTextScroller : MonoBehaviour {
             }
         } else {
             currentPage += 1;
+            Debug.Log(currentPage + " " + pages.Count + " " + pages[currentPage]);
             TextMeshPro.text = pages[currentPage].ToString();
         }
     }
