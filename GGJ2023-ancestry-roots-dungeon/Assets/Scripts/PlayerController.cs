@@ -19,16 +19,21 @@ public class PlayerController : MonoBehaviour
     public Sprite SpriteRight;
     public Sprite SpriteLeft;
 
+    public AttackManager attackManager;
+
+    private Vector2 lastDirectionFaced = Vector2.right;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void Awake()
     {
         _playerCollider = this.gameObject.GetComponent<PlayerCollider>();
         //InputManager.MovementActions.
+        // attackManager = transform.GetComponent<AttackManager>();
     }
 
     private void spriteDirection(Vector2 move) {
@@ -92,12 +97,22 @@ public class PlayerController : MonoBehaviour
             movement.y = moveY * moveSpeed;
             //Debug.Log("KeyPressS: X: " + moveX + " Y: " + moveY);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            attackManager.fire(lastDirectionFaced);
+        }
+
+        if (movement != Vector2.zero)
+        {
+            lastDirectionFaced = movement;
+        }
 
         //movement = movement + (Vector2)(transform.position);
 
         //body.AddForce(movement);
         body.velocity = (movement);
         spriteDirection(movement);
+
 
         if (Input.GetKey(KeyCode.Q))
         {
@@ -108,7 +123,7 @@ public class PlayerController : MonoBehaviour
             body.transform.Rotate(new Vector3(0, 0, -rotationSpeed));
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_playerCollider.currentPoints >= 5)
             {
