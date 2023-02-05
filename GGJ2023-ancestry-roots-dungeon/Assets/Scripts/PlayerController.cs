@@ -7,6 +7,17 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    static private PlayerController instance;
+    static public PlayerController GetInstance()
+    {
+        if (null == instance)
+        {
+            Debug.Log("PlayerController.GetInstance() called before init");
+        }
+        return instance;
+    }
+
+
     public Rigidbody2D body;
     public float moveSpeed = 2;
     public bool IsAllowInput = true;
@@ -32,6 +43,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _playerCollider = this.gameObject.GetComponent<PlayerCollider>();
+        instance = this;
         //InputManager.MovementActions.
         // attackManager = transform.GetComponent<AttackManager>();
     }

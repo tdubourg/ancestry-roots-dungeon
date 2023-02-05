@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
+
+    static private AttackManager instance;
+    static public AttackManager GetInstance()
+    {
+        if (null == instance)
+        {
+            Debug.Log("AttackManager.GetInstance() called before init");
+        }
+        return instance;
+    }
+
     public PlayerController playerController;
 
     public GameObject fireBall = null;
@@ -12,6 +23,11 @@ public class AttackManager : MonoBehaviour
     {
         None,
         Fireball
+    }
+
+    void Awake()
+    {
+        instance = this;
     }
 
     public AttackMode currentAttackMode = AttackMode.Fireball;
