@@ -50,7 +50,9 @@ public class StoryTextScroller : MonoBehaviour {
 
     void init() {
         Debug.Log("scroller init()");
+        gameObject.SetActive(true);
         pages = new ArrayList();
+        currentPage = 0;
         var words = Text.text.Split(" ");
         var pageNum = 0;
         pages.Add("");
@@ -71,7 +73,7 @@ public class StoryTextScroller : MonoBehaviour {
 
 
     void Update() {
-        if (Time.timeSinceLevelLoad > 1.1 && Input.anyKeyDown) {
+        if (Time.timeSinceLevelLoad > 1 && Input.anyKeyDown) {
             Debug.Log("Next page of text");
             NextPage();
         }
