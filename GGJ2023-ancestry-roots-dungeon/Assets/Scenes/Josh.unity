@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1562893992633209462, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1562893992633209463, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: healthUIProgressSpeed
       value: 0.2
@@ -402,11 +406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4526805128549420736, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.61
+      value: 4.11
       objectReference: {fileID: 0}
     - target: {fileID: 4526805128549420736, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4
+      value: 4.2
       objectReference: {fileID: 0}
     - target: {fileID: 4526805128549420736, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -443,6 +447,10 @@ PrefabInstance:
     - target: {fileID: 4526805128549420739, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477656483640666301, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}
+      propertyPath: enemyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1075b77cea93934489117ce5d2e0ebbf, type: 3}

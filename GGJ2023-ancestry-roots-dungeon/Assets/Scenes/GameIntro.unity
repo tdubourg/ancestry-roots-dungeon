@@ -213,6 +213,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4104154305457894979, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
+      propertyPath: ExtraEndPage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4104154305457894979, guid: a0a5139405ef1184a94e9a7e471a965c, type: 3}
       propertyPath: GoToNextSceneOnceEnded
       value: 1
       objectReference: {fileID: 0}
