@@ -48,7 +48,8 @@ public class Enemy : MonoBehaviour
 public enum EnemyType
 {
     testing,
-    basicMelee
+    basicMelee,
+    basicStationaryMelee
 }
 public class Attributes
 {
@@ -76,6 +77,10 @@ public class Attributes
         else if (enemyType.ToString() == "basicMelee")
         {
             this.speed = 2; this.range = 0f; this.safeRange = 0.5f; this.maxHealth = 10;
+        }
+        else if (enemyType.ToString() == "basicStationaryMelee")
+        {
+            this.speed = 2; this.range = 0f; this.safeRange = 200f; this.maxHealth = 10;
         }
     }
 
