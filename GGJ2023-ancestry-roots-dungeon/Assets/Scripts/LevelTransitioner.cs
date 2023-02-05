@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-enum Levels
+public enum Levels
 {
     SplashScreen,
     GameIntro,
     TrainingGround1,
     TrainingGround2,
     QuestRealStart,
+    INVALID,
 }
 
 class LevelTransitioner

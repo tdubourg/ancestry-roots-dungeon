@@ -182,5 +182,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticScreenPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6003853917333662955, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
+--- !u!1 &6003853916205605318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7400239558372644859, guid: e185f25380bc9b7469870e565c2833ac, type: 3}
+  m_PrefabInstance: {fileID: 6003853916205605317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6003853916205605319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003853916205605318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1babe81bb894349a4697aa4c73897b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
