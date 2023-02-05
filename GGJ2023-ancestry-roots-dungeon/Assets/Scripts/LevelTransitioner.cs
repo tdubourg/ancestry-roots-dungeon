@@ -99,5 +99,6 @@ class LevelTransitioner: MonoBehaviour
         var info = LEVELS_TO_CONFIG[CurrentLevel];
         NarrativeAncestorImage.sprite = info.ancestor;
         NarrativeTextScroller.Text = info.text;
+        LevelIntro.SetActive(true);
     }
 }
