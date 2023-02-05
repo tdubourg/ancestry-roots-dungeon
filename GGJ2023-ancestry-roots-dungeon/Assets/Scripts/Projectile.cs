@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float lifeTime = 2.0f;
-    public float speed = 4.0f;
+    public float lifeTime = 1.0f;
+    public float speed = 0.0f;
     private float deathTime = 0.0f;
     private Rigidbody2D rb;
+
+    public Vector2 moveDirection = Vector2.zero;
 
 
     // Start is called before the first frame update
@@ -15,15 +17,20 @@ public class Projectile : MonoBehaviour
     {
         deathTime = Time.time + lifeTime;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.forward * speed;
+        rb.velocity = moveDirection * speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // rb.velocity = rb.forward * speed;
+        Debug.Log(transform.forward);
+
         if (Time.time >= deathTime)
         {
             Destroy(gameObject);
         }
+
+        // Debug.Log(rb.velocity);
     }
 }

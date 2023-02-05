@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     PlayerCollider _playerCollider;
 
-    private AttackManager attackManager;
+    public AttackManager attackManager;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerCollider = this.gameObject.GetComponent<PlayerCollider>();
         //InputManager.MovementActions.
-        attackManager = transform.GetComponent<AttackManager>();
+        // attackManager = transform.GetComponent<AttackManager>();
     }
 
     // Update is called once per frame
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            attackManager.fire(moveDirection);
+            attackManager.fire(movement);
         }
 
         //movement = movement + (Vector2)(transform.position);
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
             body.transform.Rotate(new Vector3(0, 0, -rotationSpeed));
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_playerCollider.currentPoints >= 5)
             {

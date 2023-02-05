@@ -6,8 +6,7 @@ public class AttackManager : MonoBehaviour
 {
     public PlayerController playerController;
 
-
-    public GameObject fireBall;
+    public GameObject fireBall = null;
 
     public enum AttackMode
     {
@@ -15,14 +14,32 @@ public class AttackManager : MonoBehaviour
         Fireball
     }
 
-    public AttackMode currentAttackMode;
+    public AttackMode currentAttackMode = AttackMode.Fireball;
+
+
 
     public void fire(Vector2 direction)
     {
-        GameObject fireBallInstance = Instantiate(fireBall);
+        Debug.Log(currentAttackMode);
+        switch (currentAttackMode)
+        {
+            case (AttackMode.None):
+                break;
+            case (AttackMode.Fireball):
+                GameObject fireBallInstance = Instantiate(fireBall, transform.position, transform.rotation);
+                fireBallInstance.GetComponent<Projectile>().moveDirection = direction;
+                // fireBallInstance.transform.forward = direction;
+                break;
+            default:
+                break;
+
+        }
+
+
     }
 
     private void Update()
     {
+        currentAttackMode = AttackMode.Fireball;
     }
 }
