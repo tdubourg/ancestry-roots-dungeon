@@ -135,14 +135,15 @@ public class PlayerController : MonoBehaviour
             body.transform.Rotate(new Vector3(0, 0, -rotationSpeed));
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (_playerCollider.currentPoints >= 5)
-            {
-                _playerCollider.currentPoints -= 5;
-            }
-            //TODO - hook in action process
-        }
+        // Health regen temporarily disabled until it's a priority again
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     if (_playerCollider.currentPoints >= 5)
+        //     {
+        //         _playerCollider.currentPoints -= 5;
+        //     }
+        //     //TODO - hook in action process
+        // }
     }
 
     void Move(Vector2 direction)

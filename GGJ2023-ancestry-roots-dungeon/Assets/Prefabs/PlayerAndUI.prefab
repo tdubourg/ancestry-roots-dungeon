@@ -403,6 +403,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1562893992086760868}
     m_Modifications:
+    - target: {fileID: 1281095637, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1281095639, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: SpriteUp
       value: 
@@ -505,6 +509,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+--- !u!1 &1562893992633209467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1281095637, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+  m_PrefabInstance: {fileID: 1562893991620732334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780264353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562893992633209467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0bdb76fc8e2044790eeefe70333c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIProgressSpeed: 0.2
+  Healthbar: {fileID: 1562893993454569692}
+--- !u!114 &1780264354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562893992633209467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd59cef12312704a99ad2c2d1f45745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
+  MAX_HEALTH: 100
 --- !u!212 &5904185452791674376 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4926765013366494118, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
