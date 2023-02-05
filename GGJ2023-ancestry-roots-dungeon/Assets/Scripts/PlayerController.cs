@@ -56,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
         healthTracker = this.GetComponent<AttackEntity>();
 
+        animator = GetComponentInChildren<Animator>();
+
         //InputManager.MovementActions.
         // attackManager = transform.GetComponent<AttackManager>();
     }
