@@ -23,6 +23,7 @@ public class SingleLevelStart : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         var levelT = LevelTransitioner.GetInstance();
+        levelT.CurrentLevel = level;
         if (!levelT.IsLevelCleared(this.level)) {
             levelT.TriggerLevelIntro();
         }

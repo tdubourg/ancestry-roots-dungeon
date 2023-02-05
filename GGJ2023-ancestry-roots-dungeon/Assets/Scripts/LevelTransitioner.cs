@@ -19,13 +19,12 @@ public enum Levels
 class LevelTransitioner: MonoBehaviour
 {
     static private LevelTransitioner instance;
-    private Levels currentLevel = Levels.SplashScreen;
+
+    public GameObject UIRoot;
+    
+    public Levels CurrentLevel = Levels.SplashScreen;
 
     private HashSet<Levels> clearedLevels = new HashSet<Levels>();
-
-    public Levels getCurrentLevel() {
-        return currentLevel;
-    }
 
     public void SetHasClearedLevel(Levels level) {
         clearedLevels.Add(level);
@@ -80,6 +79,6 @@ class LevelTransitioner: MonoBehaviour
     }
 
     public void TriggerLevelIntro() {
-        
+
     }
 }
