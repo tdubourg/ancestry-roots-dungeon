@@ -216,7 +216,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
       propertyPath: LineDrawSpeed
-      value: 0.01
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 7405795471004727625, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
       propertyPath: m_Name

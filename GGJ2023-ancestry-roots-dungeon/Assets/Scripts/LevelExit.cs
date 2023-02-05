@@ -16,7 +16,7 @@ class LevelExit : MonoBehaviour {
             return;
         }
         if (other.tag == AttackEntity.AttackersTags.Player) {
-            LevelTransitioner.GetInstance().GoToLevel(NextLevel);
+            LevelTransitioner.GetInstance().GoToLevelViaMap(NextLevel);
         }
     }
 

@@ -20,7 +20,7 @@ public class LevelsMapManager : MonoBehaviour {
 
     private Transform origin;
     private Transform destination;
-    private float dist = 0;
+    private float dist = 1000f;
     private float counter;
     private float nextActionTime = 0.0f;
     private float maxActionTime = 2.0f;
@@ -121,8 +121,10 @@ public class LevelsMapManager : MonoBehaviour {
             Vector3 pointAlongline = x * Vector3.Normalize(pointB - pointA) + pointA;
             LineAnimator.SetPosition(0, origin.position);
             LineAnimator.SetPosition(1, pointAlongline);
-
-
+        } else {
+            if (Input.anyKeyDown) {
+                LevelTransitioner.GetInstance().ContinueAfterTreeMap();
+            }
         }
     }
 }

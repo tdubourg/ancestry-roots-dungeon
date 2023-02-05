@@ -131,6 +131,12 @@ public GameObject PlayerRoot;
         SceneManager.LoadScene(getSceneFileNameFromEnum(Levels.MapTree));
     }
 
+    public void ContinueAfterTreeMap() {
+        PlayerRoot.SetActive(true);
+        UIRoot.SetActive(true);
+        GoToLevel(PostTreeMapLevelTarget);
+    }
+
 
     public void TriggerLevelIntro() {
         Debug.Log("TriggerLevelIntro");

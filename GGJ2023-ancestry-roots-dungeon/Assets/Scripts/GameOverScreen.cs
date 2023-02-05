@@ -12,7 +12,7 @@ public class GameOverScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeSinceLevelLoad > 2 && Input.anyKeyDown)
+        if (Time.timeSinceLevelLoad > 1 && Input.anyKeyDown)
         {
             Debug.Log("Restarting the game");
             LevelTransitioner.GetInstance().GoToLevel(Levels.SplashScreen);
