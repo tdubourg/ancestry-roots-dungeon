@@ -2,23 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
+using UnityEngine.UI;
 
-enum Levels
+public enum Levels
 {
     SplashScreen,
     GameIntro,
     TrainingGround1,
     TrainingGround2,
     QuestRealStart,
+    INVALID,
 }
 
-class LevelTransitioner
+class LevelTransitioner: MonoBehaviour
 {
-    static private LevelTransitioner instance;
-    private Levels currentLevel = Levels.SplashScreen;
 
-    public Levels getCurrentLevel() {
-        return currentLevel;
+     [Serializable]
+    public struct LevelInfo {
+        public Levels level;
+        public Sprite ancestor;
+
+        public TextAsset text;
+    }
+    public LevelInfo[] LevelsConfig;
+
+    private Dictionary<Levels,LevelInfo> LEVELS_TO_CONFIG = new Dictionary<Levels, LevelInfo>();
+    static private LevelTransitioner instance;
+
+    public GameObject LevelIntro;
+    public Image NarrativeAncestorImage;
+    public StoryTextScroller NarrativeTextScroller;
+
+    public Levels CurrentLevel = Levels.SplashScreen;
+
+    private HashSet<Levels> clearedLevels = new HashSet<Levels>();
+
+    public void SetHasClearedLevel(Levels level) {
+        clearedLevels.Add(level);
+    }
+
+    public bool IsLevelCleared(Levels level) {
+        return clearedLevels.Contains(level);
     }
 
     private LevelTransitioner()
@@ -44,11 +70,22 @@ class LevelTransitioner
         }
     }
 
+    
+    void Awake()
+    {
+        instance = this;
+        for (int i = 0; i < LevelsConfig.Length; i++)
+        {
+            LEVELS_TO_CONFIG[LevelsConfig[i].level] = LevelsConfig[i];
+        }
+    }
+
     static public LevelTransitioner GetInstance()
     {
         if (null == instance)
         {
-            instance = new LevelTransitioner();
+            Debug.Log("LevelTransitioner.GetInstance() called before init");
+
         }
         return instance;
     }
@@ -56,5 +93,12 @@ class LevelTransitioner
     public void GoToLevel(Levels target)
     {
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
+    }
+
+    public void TriggerLevelIntro() {
+        var info = LEVELS_TO_CONFIG[CurrentLevel];
+        NarrativeAncestorImage.sprite = info.ancestor;
+        NarrativeTextScroller.Text = info.text;
+        LevelIntro.SetActive(true);
     }
 }
