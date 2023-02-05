@@ -211,26 +211,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAndUI
       objectReference: {fileID: 0}
-    - target: {fileID: 1562893992086760869, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562893992633209462, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562893992633209463, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: healthUIProgressSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9132758837739904496, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 9132758837739904496, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.14
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
 --- !u!4 &1805443791 stripped

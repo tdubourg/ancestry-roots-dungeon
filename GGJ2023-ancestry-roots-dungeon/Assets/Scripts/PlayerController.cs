@@ -8,6 +8,8 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     static private PlayerController instance;
+    public Animator animator;
+
     static public PlayerController GetInstance()
     {
         if (null == instance)
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public Sprite SpriteRight;
     public Sprite SpriteLeft;
 
+
     public AttackManager attackManager;
 
     private Vector2 lastDirectionFaced = Vector2.right;
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
         instance = this;
 
         healthTracker = this.GetComponent<AttackEntity>();
+
+        animator = GetComponentInChildren<Animator>();
 
         //InputManager.MovementActions.
         // attackManager = transform.GetComponent<AttackManager>();
@@ -138,6 +143,12 @@ public class PlayerController : MonoBehaviour
         {
             attackManager.fire(lastDirectionFaced);
         }
+
+        animator.SetFloat("horizontal", movement.x);
+        animator.SetFloat("prevhoriz", lastDirectionFaced.x);
+        animator.SetFloat("vertical", movement.y);
+        animator.SetFloat("prevvert", lastDirectionFaced.y);
+        animator.SetFloat("speed", movement.sqrMagnitude);
 
         if (movement != Vector2.zero)
         {
