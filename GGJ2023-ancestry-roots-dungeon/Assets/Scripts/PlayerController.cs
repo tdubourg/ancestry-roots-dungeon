@@ -8,6 +8,8 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     static private PlayerController instance;
+    public Animator animator;
+
     static public PlayerController GetInstance()
     {
         if (null == instance)
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public Sprite SpriteDown;
     public Sprite SpriteRight;
     public Sprite SpriteLeft;
+
 
     public AttackManager attackManager;
 
@@ -138,6 +141,10 @@ public class PlayerController : MonoBehaviour
         {
             attackManager.fire(lastDirectionFaced);
         }
+
+        animator.SetFloat("horizontal", movement.x);
+        animator.SetFloat("vertical", movement.y);
+        animator.SetFloat("speed", movement.sqrMagnitude);
 
         if (movement != Vector2.zero)
         {
