@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135108341905873218}
   m_Layer: 0
-  m_Name: UI
+  m_Name: DeprecatedDONOTUSE_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

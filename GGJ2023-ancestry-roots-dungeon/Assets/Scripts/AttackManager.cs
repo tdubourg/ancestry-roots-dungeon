@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AttackManager : MonoBehaviour
 {
-
+    private AudioSource audioSource;
+    public AudioClip fireBallSound;
     static private AttackManager instance;
     static public AttackManager GetInstance()
     {
@@ -28,6 +29,7 @@ public class AttackManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public AttackMode currentAttackMode = AttackMode.Fireball;
@@ -42,6 +44,13 @@ public class AttackManager : MonoBehaviour
             case (AttackMode.Fireball):
                 GameObject fireBallInstance = Instantiate(fireBall, transform.position, transform.rotation);
                 fireBallInstance.GetComponent<Projectile>().moveDirection = direction;
+                if (fireBallSound)
+                {
+                    audioSource.time = 2f;
+                    audioSource.PlayOneShot(fireBallSound, 1.0f);
+                }
+                else
+                    Debug.Log("fireball sound not loaded!");
                 // fireBallInstance.transform.forward = direction;
                 break;
             default:
@@ -50,6 +59,25 @@ public class AttackManager : MonoBehaviour
         }
 
 
+    }
+    public void UpdatePlayerHealthUI()
+    {
+
+    }
+
+    public void collideAttackingEntities(GameObject a, GameObject b)
+    {
+        Debug.Log("Exchanging damages between " + a.tag + " & " + b.tag + "?");
+        var aeA = a.GetComponent<AttackEntity>();
+        var aeB = b.GetComponent<AttackEntity>();
+        if (null == aeA || null == aeB)
+        {
+            // Either one of those isn't meant to attach/be attacked
+            Debug.Log("No need to exchange damage");
+            return;
+        }
+        aeA.TakeDamage(aeB);
+        aeB.TakeDamage(aeA);
     }
 
 }

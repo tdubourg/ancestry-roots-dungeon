@@ -13,7 +13,7 @@ public class SplashScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if (Input.anyKeyDown)
         {
             Debug.Log("Going to the next scene!");
             LevelTransitioner.GetInstance().GoToLevel(Levels.GameIntro);
