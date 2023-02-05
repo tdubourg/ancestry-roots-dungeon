@@ -145,7 +145,9 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetFloat("horizontal", movement.x);
+        animator.SetFloat("prevhoriz", lastDirectionFaced.x);
         animator.SetFloat("vertical", movement.y);
+        animator.SetFloat("prevvert", lastDirectionFaced.y);
         animator.SetFloat("speed", movement.sqrMagnitude);
 
         if (movement != Vector2.zero)
