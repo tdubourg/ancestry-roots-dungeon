@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public EnemyType enemyType;
     private Attributes attributes;
     private GameObject Player;
+    private Animator animator;
 
 
     public int health;
@@ -15,13 +16,24 @@ public class Enemy : MonoBehaviour
     private Vector2 direction;
 
     private float nextAttackTime;
+    public GameObject sprite;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         Player = GameObject.FindWithTag("Player");
         attributes = new Attributes(enemyType);
         health = attributes.maxHealth;
+    }
+
+    void LookAt2D(Vector3 targ)
+    {
+        Vector3 diff = targ - sprite.transform.position;
+        diff.Normalize();
+
+        float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+        sprite.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
     }
 
     // Update is called once per frame
@@ -32,12 +44,21 @@ public class Enemy : MonoBehaviour
         if (distance > attributes.safeRange)
         {
             transform.Translate(direction * Time.deltaTime);
+            animator.SetFloat("movespeed", 1);
+
+
+            // LookAt2D(Player.transform.position);
         }//moving towards player;
         // else if (distance < attributes.safeRange)
         // {
         //     transform.Translate(direction * -1 * Time.deltaTime);
         // }//moving away from player;
         // Basic movement;
+        else
+        {
+            animator.SetFloat("movespeed", 0);
+
+        }
 
         // if (attributes.range >= distance)
         // {
