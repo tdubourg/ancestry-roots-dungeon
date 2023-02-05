@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // rb.velocity = rb.forward * speed;
-        Debug.Log(transform.forward);
 
         if (Time.time >= deathTime)
         {

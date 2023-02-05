@@ -35,7 +35,6 @@ public class PlayerCollider : MonoBehaviour
         if (period > 5)
         {
             currentPoints += regenRate;
-            Debug.Log(currentPoints);
             //Do Stuff
             period = 0;
         }
