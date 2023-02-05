@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI; // Required when Using UI elements.
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StoryTextScroller : MonoBehaviour {
     static private StoryTextScroller instance;
@@ -34,9 +35,19 @@ public class StoryTextScroller : MonoBehaviour {
             return;
         }
         instance = this;
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void Start() {
+    private void OnSceneLoaded(Scene _scene, LoadSceneMode _mode) {
+        init();
+    }
+
+    void OnEnable() {
+        init();
+    }
+
+    void init() {
+        Debug.Log("scroller init()");
         Debug.Log(Text.text);
         var words = Text.text.Split(" ");
         var pageNum = 0;
@@ -44,13 +55,14 @@ public class StoryTextScroller : MonoBehaviour {
         // Hacky, unoptimized, but quick to write
         for (int i = 0; i < words.Length; i++) {
             pages[pageNum] += words[i] + " ";
-            if (0 == ((i+1) % PageSizeNumWords)) {
+            if (0 == ((i + 1) % PageSizeNumWords)) {
                 Debug.Log(pages[pageNum]);
                 pageNum += 1;
                 pages.Add("");
             }
         }
         TextMeshPro.text = pages[0].ToString();
+
     }
 
 

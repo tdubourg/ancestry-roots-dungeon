@@ -3259,17 +3259,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAndUI
       objectReference: {fileID: 0}
-    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: NextScene
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: VanishOnceEnded
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-      propertyPath: GoToNextSceneOnceEnded
-      value: 1
+    - target: {fileID: 7509655842109049253, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: CurrentLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9132758837739904496, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: m_LocalPosition.x
