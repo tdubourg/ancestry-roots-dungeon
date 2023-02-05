@@ -44,7 +44,7 @@ public class AttackEntity : MonoBehaviour {
     public void Die() {
         Debug.Log("AttachEntity " + this.gameObject.tag + " dead");
         if (this.gameObject.tag == AttackersTags.Player) {
-            // do something
+            LevelTransitioner.GetInstance().GoToLevel(Levels.GameOver);
         } else if (this.gameObject.tag == AttackersTags.Enemy || this.gameObject.tag == AttackersTags.Fireball) {
             // For now, just vanish
             Debug.Log("Vanish!");

@@ -13,6 +13,7 @@ public enum Levels {
     TrainingGround2,
     QuestRealStart,
     INVALID,
+    GameOver,
 }
 
 class LevelTransitioner : MonoBehaviour {
@@ -61,6 +62,8 @@ class LevelTransitioner : MonoBehaviour {
                 return "TrainingGround2";
             case Levels.QuestRealStart:
                 return "QuestRealStart";
+            case Levels.GameOver:
+                return "GameOver";
             case Levels.SplashScreen:
             default:
                 return "SplashScreen";
@@ -96,6 +99,10 @@ class LevelTransitioner : MonoBehaviour {
 
     public void GoToLevel(Levels target) {
         CurrentLevel = target;
+        if (target == Levels.GameOver) {
+            // Tear down everything
+            Destroy(gameObject);
+        }
         SceneManager.LoadScene(getSceneFileNameFromEnum(target));
     }
 
