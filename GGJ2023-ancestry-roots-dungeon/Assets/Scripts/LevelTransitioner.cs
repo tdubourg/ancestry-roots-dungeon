@@ -73,6 +73,9 @@ class LevelTransitioner: MonoBehaviour
     
     void Awake()
     {
+        if (null != instance) {
+            return;
+        }
         instance = this;
         for (int i = 0; i < LevelsConfig.Length; i++)
         {

@@ -3205,7 +3205,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1446681500}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 888342966807823376, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: level
@@ -3213,7 +3213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562893992086760868, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1562893992086760868, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3259,17 +3259,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerAndUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: NextScene
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: VanishOnceEnded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618636626276452667, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: GoToNextSceneOnceEnded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9132758837739904496, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
---- !u!4 &535639689 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1562893992086760868, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
-  m_PrefabInstance: {fileID: 535639688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &552275531
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,7 +7136,7 @@ Transform:
   - {fileID: 77359478}
   - {fileID: 395357390}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1426679752
 GameObject:
@@ -7395,9 +7402,8 @@ Transform:
   - {fileID: 321072375}
   - {fileID: 1818687263}
   - {fileID: 664378480}
-  - {fileID: 535639689}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1456896633
 GameObject:

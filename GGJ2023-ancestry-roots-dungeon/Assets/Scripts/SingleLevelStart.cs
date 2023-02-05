@@ -18,6 +18,12 @@ public class SingleLevelStart : MonoBehaviour {
     }
 
     void Awake() {
+        if (null != instance) {
+            DestroyImmediate(gameObject);
+        } else {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
     }
 
     // Start is called before the first frame update
