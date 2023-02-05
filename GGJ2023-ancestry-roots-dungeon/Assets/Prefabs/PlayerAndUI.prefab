@@ -145,16 +145,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c18a048578cce44b78cf68efcbe44b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIRoot: {fileID: 1562893992223144624}
+  PlayerRoot: {fileID: 5546984611128948945}
   LevelsConfig:
   - level: 2
     ancestor: {fileID: 21300000, guid: 0a8e356cb3677734987619d825922708, type: 3}
     text: {fileID: 4900000, guid: 9143e45a550ea24459da87ded58eb049, type: 3}
+    spawnCoords: {x: 1.2, y: 0}
   - level: 3
     ancestor: {fileID: 21300000, guid: 4868f1cbea8fd324b8592924b2dbab8e, type: 3}
     text: {fileID: 4900000, guid: 8694b214cc633b24f92a30f421dd17e3, type: 3}
+    spawnCoords: {x: 1.2, y: 0}
   - level: 4
     ancestor: {fileID: 21300000, guid: fb65ac0eda2546b478060ec9b8754d2d, type: 3}
     text: {fileID: 4900000, guid: 6ebd47ae8edb24244bb82056edff18cc, type: 3}
+    spawnCoords: {x: 1.2, y: 0}
   LevelIntro: {fileID: 5036814222454528154}
   NarrativeAncestorImage: {fileID: 7369906482839814537}
   NarrativeTextScroller: {fileID: 3618636626276452667}
@@ -757,11 +762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714261578164385886, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714261578164385886, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714261578164385886, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1025,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd59cef12312704a99ad2c2d1f45745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBetweenAttacks: 1
   Damage: 0
   MAX_HEALTH: 100
 --- !u!1 &1815792751524601037 stripped
@@ -1128,6 +1134,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5546984611128948945 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6434054881291754879, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+  m_PrefabInstance: {fileID: 1562893991620732334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &5904185452791674376 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4926765013366494118, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
