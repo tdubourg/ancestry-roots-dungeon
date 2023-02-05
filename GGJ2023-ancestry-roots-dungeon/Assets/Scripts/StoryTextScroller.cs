@@ -22,6 +22,8 @@ public class StoryTextScroller : MonoBehaviour {
 
     private int currentPage = 0;
 
+    public bool ExtraEndPage = false;
+
     private ArrayList pages;
     static public StoryTextScroller GetInstance() {
         if (null == instance) {
@@ -59,6 +61,9 @@ public class StoryTextScroller : MonoBehaviour {
                 pageNum += 1;
                 pages.Add("");
             }
+        }
+        if (ExtraEndPage) {
+            pages.Add("...");
         }
         TextMeshPro.text = pages[0].ToString();
 
