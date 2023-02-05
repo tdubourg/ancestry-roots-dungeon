@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D body;
-    public float moveSpeed = 1;
+    public float moveSpeed = 2;
     public bool IsAllowInput = true;
     public float rotationSpeed = 1.0f;
 
