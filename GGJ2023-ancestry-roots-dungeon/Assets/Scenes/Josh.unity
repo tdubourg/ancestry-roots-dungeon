@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: healthUIProgressSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5904185452791674383, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9132758837739904496, guid: 1b3fec0e71a73a445a4b245e1689b23f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.24
