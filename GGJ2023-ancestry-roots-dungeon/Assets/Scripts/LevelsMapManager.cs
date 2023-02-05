@@ -9,34 +9,56 @@ public class LevelsMapManager : MonoBehaviour
     public List<Sprite> States;//0 = Off & 1 = On
     LineRenderer LineAnimator;
     public float lineDrawSpeed = .000006f;
+    public Material LineMaterial;
+    public float lineSize = 0.05f;
+    public Color lineColor = Color.gray;
 
     private Transform origin;
     private Transform destination;
     private float dist = 0;
     private float counter;
+    private float nextActionTime = 0.0f;
+    private float maxActionTime = 2.0f;
+    public float period = 0.1f;
+    private bool IsBlinking = false;
+    int LevelIndex;
 
     public void SetLevelCompletion(int currentLevel)
     {
-        origin = LevelPoints[currentLevel].transform;
-        if (LevelPoints.Count > currentLevel + 1)
-        {
-            destination = LevelPoints[currentLevel + 1].transform;
+        //if (currentLevel < 0)
+        //{
 
-            dist = Vector3.Distance(origin.position, destination.position);
+        //    IsBlinking = true;
+        //}
+        //else
+        //{
+        LevelIndex = currentLevel;
+        if (LevelIndex != LevelPoints.Count)
+        {
+            LevelIndex++;
         }
         
-        for (var i = 0; i <= currentLevel; i++)
-        {
-            if (currentLevel - i - 1 >= 0)
+        origin = LevelPoints[currentLevel].transform;
+            if (LevelPoints.Count > currentLevel + 1)
             {
-                DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
+                destination = LevelPoints[currentLevel + 1].transform;
+
+                dist = Vector3.Distance(origin.position, destination.position);
             }
-            var mySprite = LevelPoints[currentLevel-i].GetComponent<SpriteRenderer>();
-            if (mySprite != null)
+
+            for (var i = 0; i <= currentLevel; i++)
             {
-                mySprite.sprite = States[1];
+                if (currentLevel - i - 1 >= 0)
+                {
+                    DrawLineBetweenTwoPoints(LevelPoints[currentLevel - i - 1].transform.position, LevelPoints[currentLevel - i].transform.position, i);
+                }
+                var mySprite = LevelPoints[currentLevel - i].GetComponent<SpriteRenderer>();
+                if (mySprite != null)
+                {
+                    mySprite.sprite = States[1];
+                }
             }
-        }
+        //}
     }
 
 
@@ -45,6 +67,11 @@ public class LevelsMapManager : MonoBehaviour
         GameObject childOb = new GameObject("ChildLienRenderer" + i.ToString());
         childOb.transform.SetParent(this.transform);
         var Line = childOb.AddComponent<LineRenderer>();
+        Line.material = LineMaterial;
+        Line.startColor = lineColor;
+        Line.endColor = lineColor;
+        Line.startWidth = lineSize;
+        Line.endWidth = lineSize;
         Line.SetPosition(0, sp);
         Line.SetPosition(1, ep);
     }
@@ -53,12 +80,24 @@ public class LevelsMapManager : MonoBehaviour
     void Start()
     {
         LineAnimator = gameObject.AddComponent<LineRenderer>();
-        SetLevelCompletion(5);
+        LineAnimator.startColor = lineColor;
+        LineAnimator.endColor = lineColor;
+        LineAnimator.startWidth = lineSize;
+        LineAnimator.endWidth = lineSize;
+        LineAnimator.material = LineMaterial;
+        //SetLevelCompletion(1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.time > nextActionTime && Time.time <= maxActionTime)
+        {
+            
+            nextActionTime += period;
+            LevelPoints[LevelIndex].GetComponent<SpriteRenderer>().enabled = !LevelPoints[LevelIndex].GetComponent<SpriteRenderer>().enabled;
+        }
+            
         if(counter < dist)
         {
             counter += .1f / lineDrawSpeed;

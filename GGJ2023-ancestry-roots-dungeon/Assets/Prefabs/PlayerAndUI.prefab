@@ -672,6 +672,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1562893992086760868}
     m_Modifications:
     - target: {fileID: 1281095637, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
+      propertyPath: m_Name
+      value: PhysicsBodyPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281095637, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
