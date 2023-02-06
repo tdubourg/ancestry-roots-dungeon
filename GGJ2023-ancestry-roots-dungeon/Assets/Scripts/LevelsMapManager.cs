@@ -8,6 +8,7 @@ public class LevelsMapManager : MonoBehaviour {
         {Levels.TrainingGround1, 1},
         {Levels.TrainingGround2, 3},
         {Levels.QuestRealStart, 4},
+        {Levels.GameIntro, 0},
     };
 
     public List<GameObject> LevelPoints;

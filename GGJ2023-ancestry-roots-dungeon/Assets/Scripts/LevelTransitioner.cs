@@ -139,11 +139,6 @@ public GameObject PlayerRoot;
             // Tear down everything
             Destroy(gameObject);
         }
-        if (KeepOnSceneChange && KeepOnlyOnce) {
-            KeepOnSceneChange = false;
-            var throwaway = new GameObject();
-            gameObject.transform.parent = throwaway.transform;
-        }
         SceneManager.LoadScene(getSceneFileNameFromEnum(Levels.MapTree));
     }
 
@@ -178,6 +173,14 @@ public GameObject PlayerRoot;
     private void init() {
         if (!IsLevelCleared(CurrentLevel)) {
             TriggerLevelIntro();
+        }
+        if (!KeepOnSceneChange) {
+            var throwaway = new GameObject();
+            gameObject.transform.parent = throwaway.transform;
+        }
+        if (KeepOnSceneChange && KeepOnlyOnce) {
+            Debug.Log("HERE!");
+            KeepOnSceneChange = false;
         }
     }
 

@@ -165,6 +165,7 @@ MonoBehaviour:
   NarrativeTextScroller: {fileID: 3618636626276452667}
   CurrentLevel: 2
   KeepOnSceneChange: 1
+  KeepOnlyOnce: 0
 --- !u!1 &1562893992223144624
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,7 +775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714261578164385886, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7714261578164385886, guid: a3f63096d1a3d594fa0e4a616fc208b2, type: 3}
       propertyPath: m_LocalPosition.y
