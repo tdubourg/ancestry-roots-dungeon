@@ -115,6 +115,9 @@ public class LevelsMapManager : MonoBehaviour {
         }
 
         if (counter < dist) {
+            Debug.Log("counter " + counter);
+            Debug.Log("dist " + dist);
+            Debug.Log("bool " + (counter < dist));
             counter += .1f * LineDrawSpeed;
 
             float x = Mathf.Lerp(0, dist, counter);
@@ -125,10 +128,10 @@ public class LevelsMapManager : MonoBehaviour {
             Vector3 pointAlongline = x * Vector3.Normalize(pointB - pointA) + pointA;
             LineAnimator.SetPosition(0, origin.position);
             LineAnimator.SetPosition(1, pointAlongline);
-        } else {
-            if (Input.anyKeyDown) {
-                LevelTransitioner.GetInstance().ContinueAfterTreeMap();
-            }
+        }
+        
+        if (Time.timeSinceLevelLoad > 1 && Input.anyKeyDown) {
+            LevelTransitioner.GetInstance().ContinueAfterTreeMap();
         }
     }
 }
