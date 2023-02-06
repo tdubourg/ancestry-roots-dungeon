@@ -171,6 +171,13 @@ public GameObject PlayerRoot;
     }
 
     private void init() {
+        try {
+            if(null == gameObject) {
+                return;
+            }
+        } catch (Exception _e) {
+            return;
+        }
         if (!IsLevelCleared(CurrentLevel)) {
             TriggerLevelIntro();
         }

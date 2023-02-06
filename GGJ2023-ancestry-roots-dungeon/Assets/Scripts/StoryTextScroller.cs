@@ -51,6 +51,12 @@ public class StoryTextScroller : MonoBehaviour {
     }
 
     void init() {
+        try {
+            if (!gameObject) {
+            return;
+        }} catch (Exception _e) {
+            return;
+        }
         Debug.Log("scroller init()");
         gameObject.SetActive(true);
         pages = new ArrayList();
