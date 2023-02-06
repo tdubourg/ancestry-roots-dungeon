@@ -214,6 +214,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3867941201941577024, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867941202264940961, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867941202344331371, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3867941203031945577, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: lineSize
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: lineColor.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: lineColor.g
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: lineColor.r
+      value: 0.49019608
+      objectReference: {fileID: 0}
     - target: {fileID: 7405795471004727624, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
       propertyPath: LineDrawSpeed
       value: 0.02
@@ -264,6 +296,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405795471004727631, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373695516755176068, guid: 1857ba487fe67104c8b63b334cca5a06, type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -17,8 +17,7 @@ public class LevelsMapManager : MonoBehaviour {
     public float LineDrawSpeed = .006f;
     public Material LineMaterial;
     public float lineSize = 0.05f;
-    public Color lineColor = Color.gray;
-
+    public Color lineColor = new Color(125f, 21f, 17f);
     private Transform origin;
     private Transform destination;
     private float dist = 1000f;
@@ -99,7 +98,11 @@ public class LevelsMapManager : MonoBehaviour {
         LineAnimator.startWidth = lineSize;
         LineAnimator.endWidth = lineSize;
         LineAnimator.material = LineMaterial;
-        SetLevelCompletion(LEVEL_TO_INT_MAP[LevelTransitioner.GetInstance().PreviousLevel]);
+        if (null != LevelTransitioner.GetInstance()) {
+            SetLevelCompletion(LEVEL_TO_INT_MAP[LevelTransitioner.GetInstance().PreviousLevel]);
+        } else { // for standalone debugging
+            SetLevelCompletion(1);
+        }
         //SetLevelCompletion(1);
     }
 
