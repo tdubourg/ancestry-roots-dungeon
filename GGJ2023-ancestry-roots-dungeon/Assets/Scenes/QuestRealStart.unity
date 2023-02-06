@@ -1583,7 +1583,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2018105155}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &258144013
 BoxCollider:
@@ -6894,6 +6894,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit
       objectReference: {fileID: 0}
+    - target: {fileID: 8377328995766976171, guid: 5c8dd071c542b7442a7969d47c86f7ed, type: 3}
+      propertyPath: SkipMap
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377328995766976171, guid: 5c8dd071c542b7442a7969d47c86f7ed, type: 3}
+      propertyPath: NextLevel
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8377328995766976172, guid: 5c8dd071c542b7442a7969d47c86f7ed, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10080,9 +10088,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 258144012}
   - {fileID: 1251059402}
   - {fileID: 1010091020}
-  - {fileID: 258144012}
   - {fileID: 863031704}
   m_Father: {fileID: 46118757}
   m_RootOrder: 1

@@ -7,6 +7,7 @@ using System;
 class LevelExit : MonoBehaviour {
 
     public Levels NextLevel;
+    public bool SkipMap = false;
     void OnTriggerEnter2D(Collider2D otherCollider)
     {
         Debug.Log("Trigger");
@@ -16,7 +17,11 @@ class LevelExit : MonoBehaviour {
             return;
         }
         if (other.tag == AttackEntity.AttackersTags.Player) {
-            LevelTransitioner.GetInstance().GoToLevelViaMap(NextLevel);
+            if (SkipMap) {
+                LevelTransitioner.GetInstance().GoToLevel(NextLevel);
+            } else {
+                LevelTransitioner.GetInstance().GoToLevelViaMap(NextLevel);
+            }
         }
     }
 
